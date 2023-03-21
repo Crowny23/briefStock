@@ -7,12 +7,14 @@ namespace exerciceArticle
 	public class MagasinCLI
 	{
 		public bool Exit { get; set; }
-        public Magasin Magasin { get; set; }
+        //public Magasin Magasin { get; set; }
+        public SaveCSV SaveCSV { get; set; }
 
 		public MagasinCLI()
 		{
 			Exit = true;
-            Magasin = new();
+            //Magasin = new();
+            SaveCSV = new();
 		}
 
         /// <summary>
@@ -22,6 +24,7 @@ namespace exerciceArticle
 		{
             while (Exit)
             {
+                SaveCSV.lireStock();
                 Console.WriteLine("1) Rechercher un article par référence");
                 Console.WriteLine("2) Ajouter un article");
                 Console.WriteLine("3) Supprimer un article par référence");
@@ -43,11 +46,12 @@ namespace exerciceArticle
                         case 2:
                             Ajouter:
                                 Article article = ajouterArticle();
-                            if (Magasin.testRef(article))
+                            if (SaveCSV.testRef(article)) //pour Magasin changer SaveCSV par Magasin
                             {
                                 goto Ajouter;
                             }
-                            Magasin.ajouterArticle(article);
+                            //Magasin.ajouterArticle(article);
+                            SaveCSV.ecrire(article.AddCsv());
                             break;
                         case 3:
                             supprimerParRef();
@@ -57,9 +61,11 @@ namespace exerciceArticle
                             break;
                         case 5:
                             afficherParNom();
+                            sortirParTouche();
                             break;
                         case 6:
                             afficherParPrix();
+                            sortirParTouche();
                             break;
                         case 7:
                             afficherTousLesArticles();
@@ -109,6 +115,17 @@ namespace exerciceArticle
                     Console.WriteLine(e.Message);
                     goto Prix;
                 }
+            Stock:
+                try
+                {
+                    Console.WriteLine("Stock :");
+                    article.Stock = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                    goto Stock;
+                }
 
             return article;
         }
@@ -118,7 +135,8 @@ namespace exerciceArticle
         /// </summary>
         public void afficherTousLesArticles()
         {
-            Magasin.afficherTousLesArticles();
+            //Magasin.afficherTousLesArticles();
+            SaveCSV.afficherTousLesArticles();
         }
 
         /// <summary>
@@ -128,7 +146,8 @@ namespace exerciceArticle
         {
             afficherTousLesArticles();
             int saisieRef = saisieReference();
-            Magasin.supprimerParRef(saisieRef);
+            //Magasin.supprimerParRef(saisieRef);
+            SaveCSV.supprimerParRef(saisieRef);
         }
 
         /// <summary>
@@ -206,7 +225,8 @@ namespace exerciceArticle
         public void afficherParPrix()
         {
             (decimal prix1, decimal prix2) = saisiePrix();
-            Magasin.afficherParPrix(prix1, prix2);
+            //Magasin.afficherParPrix(prix1, prix2);
+            SaveCSV.afficherParPrix(prix1, prix2);
         }
 
         /// <summary>
@@ -215,7 +235,8 @@ namespace exerciceArticle
         public void afficherParRef()
         {
             int saisieRef = saisieReference();
-            Magasin.afficheParRef(saisieRef);
+            //Magasin.afficheParRef(saisieRef);
+            SaveCSV.afficheParRef(saisieRef);
         }
 
         /// <summary>
@@ -224,7 +245,8 @@ namespace exerciceArticle
         public void afficherParNom()
         {
             string saisie = saisieNom();
-            Magasin.afficherParNom(saisie);
+            //Magasin.afficherParNom(saisie);
+            SaveCSV.afficherParNom(saisie);
         }
 
         /// <summary>
@@ -235,7 +257,8 @@ namespace exerciceArticle
             afficherTousLesArticles();
             int saisieRef = saisieReference();
             Article article = ajouterArticle();
-            Magasin.modifierParRef(saisieRef, article);
+            //Magasin.modifierParRef(saisieRef, article);
+            SaveCSV.modifierParRef(saisieRef, article);
         }
 
         /// <summary>

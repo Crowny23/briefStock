@@ -6,7 +6,7 @@ namespace exerciceArticle
 	/// </summary>
 	public class Magasin
 	{
-		List<Article> ListesArticles { get; set; }
+		public List<Article> ListesArticles { get; set; }
 
 		public Magasin()
 		{
