@@ -1,6 +1,9 @@
 ﻿using System;
 namespace exerciceArticle
 {
+    /// <summary>
+    /// Affichage CLI du magasin
+    /// </summary>
 	public class MagasinCLI
 	{
 		public bool Exit { get; set; }
@@ -12,6 +15,9 @@ namespace exerciceArticle
             Magasin = new();
 		}
 
+        /// <summary>
+        /// Menu du CLI
+        /// </summary>
 		public void menuCLI()
 		{
             while (Exit)
@@ -56,7 +62,7 @@ namespace exerciceArticle
                             afficherParPrix();
                             break;
                         case 7:
-                            afficherToutesLesArticles();
+                            afficherTousLesArticles();
                             sortirParTouche();
                             break;
                         case 8:
@@ -72,6 +78,10 @@ namespace exerciceArticle
             }
         }
 
+        /// <summary>
+        /// Ajoute un article dans le magasin
+        /// </summary>
+        /// <returns>objet article</returns>
         public Article ajouterArticle()
         {
             Article article = new();
@@ -93,7 +103,7 @@ namespace exerciceArticle
                 try
                 {
                     Console.WriteLine("Prix :");
-                    article.Prix = int.Parse(Console.ReadLine());
+                    article.Prix = decimal.Parse(Console.ReadLine());
                 } catch (FormatException e)
                 {
                     Console.WriteLine(e.Message);
@@ -103,18 +113,28 @@ namespace exerciceArticle
             return article;
         }
 
-        public void afficherToutesLesArticles()
+        /// <summary>
+        /// Affiche tous les articles du magasin
+        /// </summary>
+        public void afficherTousLesArticles()
         {
             Magasin.afficherTousLesArticles();
         }
 
+        /// <summary>
+        /// Suprime un article par sa référence
+        /// </summary>
         public void supprimerParRef()
         {
-            afficherToutesLesArticles();
+            afficherTousLesArticles();
             int saisieRef = saisieReference();
             Magasin.supprimerParRef(saisieRef);
         }
 
+        /// <summary>
+        /// Saisir une référence d'article
+        /// </summary>
+        /// <returns>La référence saisie en nombre</returns>
         public int saisieReference()
         {
             int saisieRef = 0;
@@ -132,6 +152,10 @@ namespace exerciceArticle
             return saisieRef;
         }
 
+        /// <summary>
+        /// Saisir un nom d'article
+        /// </summary>
+        /// <returns>Le nom saisie en chaine de caractère</returns>
         public string saisieNom()
         {
             Console.WriteLine("Saisissez un nom :");
@@ -139,15 +163,19 @@ namespace exerciceArticle
             return saisieNom;
         }
 
-        public (int, int) saisiePrix()
+        /// <summary>
+        /// Saisir 2 nombres pour faire l'interval de prix
+        /// </summary>
+        /// <returns>retourne les 2 prix saisis en nombre</returns>
+        public (decimal, decimal) saisiePrix()
         {
-            int prix1 = 0;
-            int prix2 = 0;
+            decimal prix1 = 0;
+            decimal prix2 = 0;
             Prix1:
                 try
                 {
                     Console.WriteLine("Saisissez le premier prix :");
-                    prix1 = int.Parse(Console.ReadLine());
+                    prix1 = decimal.Parse(Console.ReadLine());
                 }
                 catch (FormatException e)
                 {
@@ -158,7 +186,7 @@ namespace exerciceArticle
                 try
                 {
                     Console.WriteLine("Saisissez le deuxième prix :");
-                    prix2 = int.Parse(Console.ReadLine());
+                    prix2 = decimal.Parse(Console.ReadLine());
                 }
                 catch (FormatException e)
                 {
@@ -172,32 +200,47 @@ namespace exerciceArticle
             return (prix1, prix2);
         }
 
+        /// <summary>
+        /// Affiche les articles compris entre 2 prix
+        /// </summary>
         public void afficherParPrix()
         {
-            (int prix1, int prix2) = saisiePrix();
+            (decimal prix1, decimal prix2) = saisiePrix();
             Magasin.afficherParPrix(prix1, prix2);
         }
 
+        /// <summary>
+        /// Affiche un article par référence
+        /// </summary>
         public void afficherParRef()
         {
             int saisieRef = saisieReference();
             Magasin.afficheParRef(saisieRef);
         }
 
+        /// <summary>
+        /// Affiche un article par Nom
+        /// </summary>
         public void afficherParNom()
         {
             string saisie = saisieNom();
             Magasin.afficherParNom(saisie);
         }
 
+        /// <summary>
+        /// Modifie un article par ref
+        /// </summary>
         public void modifierParRef()
         {
-            afficherToutesLesArticles();
+            afficherTousLesArticles();
             int saisieRef = saisieReference();
             Article article = ajouterArticle();
             Magasin.modifierParRef(saisieRef, article);
         }
 
+        /// <summary>
+        /// Permet de revenir dans le menu
+        /// </summary>
         public void sortirParTouche()
         {
             Console.WriteLine("Appyer sur une touche pour sortir");
