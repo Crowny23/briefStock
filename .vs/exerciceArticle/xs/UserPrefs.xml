@@ -1,20 +1,30 @@
-﻿<Properties>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="exerciceArticle/Program.cs">
+﻿<Properties StartupConfiguration="{A1F3138E-ADD0-4B50-979D-E4413E70FD38}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="exerciceArticle/Magasin.cs">
     <Files>
-      <File FileName="exerciceArticle/Program.cs" Line="1" Column="1" />
+      <File FileName="exerciceArticle/Program.cs" Line="5" Column="22" />
+      <File FileName="exerciceArticle/MagasinCLI.cs" Line="222" Column="22" />
+      <File FileName="exerciceArticle/Magasin.cs" Line="149" Column="1" />
+      <File FileName="exerciceArticle/Article.cs" Line="33" Column="44" />
+      <File FileName="exerciceArticle/SaveCSV.cs" Line="12" Column="36" />
+      <File FileName="exerciceArticle/stock.csv" Line="4" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="exerciceArticle" expanded="True" selected="True" />
+          <Node name="exerciceArticle" expanded="True">
+            <Node name="exerciceArticle" expanded="True">
+              <Node name="Magasin.cs" selected="True" />
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.exerciceArticle PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
